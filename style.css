@@ -1,3 +1,49 @@
-body {
-    background-color: pink;
+#video-background {
+    /* Anchors the container to cover the entire viewport */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Sends the video behind all other website content */
+    z-index: -100; 
+    overflow: hidden; /* Hides any video overflow outside the viewport */
+}
+
+#video-background iframe {
+    /* Key properties for scaling the video to always cover the screen */
+    /* This ensures a minimum coverage of the viewport */
+    min-width: 100vw; 
+    min-height: 100vh;
+    
+    /* Center the video in the middle of the screen */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#website-content {
+    /* Keeps your website content visible on top of the video */
+    position: relative; 
+    z-index: 1;
+    color: white; /* Important: Make your text easy to read over the video */
+    text-align: center;
+    /* Add padding/margins here to position your main headline */
+}
+
+/* Optional: Add a subtle overlay to help text readability */
+#video-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Semi-transparent black overlay for better text contrast */
+    background: rgba(0, 0, 0, 0.4); 
+    z-index: -99;
+}
+#website-content{
+    color: black;
 }
